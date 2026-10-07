@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, BackgroundTasks, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from sqlmodel import Session, select
+from sqlmodel import Session, select, delete
 from pydantic import BaseModel
 
 from database import engine, create_db_and_tables, get_session
@@ -373,6 +373,12 @@ class AiSettingsUpdateRequest(BaseModel):
     rag_top_k: Optional[int] = None
     strict_grounding: Optional[bool] = None
     enable_calendar_tool: Optional[bool] = None
+
+class ResetDataRequest(BaseModel):
+    conversations: bool = True
+    bookings: bool = True
+    knowledge: bool = False
+    catalog: bool = False  # services and staff
 
 class AiTestConnectionRequest(BaseModel):
     api_key: Optional[str] = None
@@ -777,6 +783,32 @@ def delete_staff(staff_id: int, session: Session = Depends(get_session)):
     session.delete(member)
     session.commit()
     return {"status": "deleted", "id": staff_id}
+
+# --- DATA RESET ---
+
+@app.post("/api/admin/reset")
+async def reset_data(req: ResetDataRequest, session: Session = Depends(get_session)):
+    """Deletes the selected kinds of business data. Settings are never touched."""
+    deleted = {}
+    if req.conversations:
+        deleted["messages"] = session.exec(delete(Message)).rowcount
+        deleted["conversations"] = session.exec(delete(Conversation)).rowcount
+    if req.bookings:
+        deleted["bookings"] = session.exec(delete(CalendarBooking)).rowcount
+    if req.catalog:
+        deleted["staff"] = session.exec(delete(StaffMember)).rowcount
+        deleted["services"] = session.exec(delete(Service)).rowcount
+    session.commit()
+
+    if req.knowledge:
+        docs = list_all_knowledge_docs()
+        for doc in docs:
+            delete_knowledge_doc(doc["id"])
+        deleted["knowledge_documents"] = len(docs)
+
+    # Let every open inbox clear its view
+    await manager.broadcast_to_agents({"type": "data_reset", "deleted": deleted})
+    return {"status": "reset", "deleted": deleted}
 
 # --- AI & WORKSPACE SETTINGS ENDPOINTS ---
 

@@ -6,7 +6,7 @@
     "correct_tool_use_booking": "2/3",
     "handoff_success": "2/2",
     "overall": "11/13",
-    "median_latency_s": 2.96
+    "median_latency_s": 3.01
   },
   "rows": [
     {
@@ -14,7 +14,7 @@
       "q": "How much is a skin fade?",
       "reply": "A skin fade is $35 and takes about 45 minutes. Let me know if you'd like to book one!",
       "tools": [],
-      "latency_s": 3.37,
+      "latency_s": 3.64,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "retrieval_hit": true,
@@ -23,9 +23,9 @@
     {
       "cat": "factual",
       "q": "What time do you open on Saturday?",
-      "reply": "We open at 09:00 on Saturdays (until 15:00). Please note that Saturdays are walk-ins only and cannot be booked in advance!",
+      "reply": "We open at 09:00 on Saturdays (closing at 15:00). Please note that Saturdays are walk-ins only and cannot be booked in advance!",
       "tools": [],
-      "latency_s": 2.42,
+      "latency_s": 3.35,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "retrieval_hit": true,
@@ -34,9 +34,9 @@
     {
       "cat": "factual",
       "q": "Do you sell anything for an itchy beard?",
-      "reply": "Yes, we do! We sell Beard Oil in Cedarwood or Unscented for $16 (30ml), which softens the beard and reduces itch. We also carry Beard Balm for $18, which provides a light hold for shaping longer beards. \n\nWould you like to pick one up in the shop?",
+      "reply": "Yes, we do! We sell Beard Oil in Cedarwood or Unscented for $16 (30ml), which softens the beard and reduces itch. \n\nWe also have Beard Balm for $18 for shaping longer beards. Would you like to pick one up at the shop?",
       "tools": [],
-      "latency_s": 3.15,
+      "latency_s": 3.06,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "retrieval_hit": true,
@@ -47,7 +47,7 @@
       "q": "What happens if I'm not happy with my haircut?",
       "reply": "I don't know the answer to that question based on our shop policies. Would you like me to connect you with a human agent who can help?",
       "tools": [],
-      "latency_s": 2.62,
+      "latency_s": 6.39,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "retrieval_hit": false,
@@ -56,9 +56,9 @@
     {
       "cat": "factual",
       "q": "Which barber is best for curly hair?",
-      "reply": "Leo Tanaka is our expert for textured and curly hair! He also specialises in longer men's styles, scissor-over-comb work, grey blending, and hair colour. Leo works on Mondays, Wednesdays, Fridays, and Saturdays. \n\nWould you like to book an appointment with Leo?",
+      "reply": "Leo Tanaka is our expert for curly and textured hair, longer men's styles, and scissor-over-comb work! He also specialises in grey blending and hair colour.",
       "tools": [],
-      "latency_s": 2.96,
+      "latency_s": 2.89,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "retrieval_hit": true,
@@ -67,9 +67,9 @@
     {
       "cat": "out_of_scope",
       "q": "Do you do perms?",
-      "reply": "I do not know if we offer perms. Would you like me to connect you with a human team member who can help?",
+      "reply": "I don't know if we offer perms. Would you like me to connect you with a human team member to find out?",
       "tools": [],
-      "latency_s": 3.45,
+      "latency_s": 2.69,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "correct": true
@@ -77,9 +77,9 @@
     {
       "cat": "out_of_scope",
       "q": "Can you dye my hair bright blue for a wedding?",
-      "reply": "We offer Hair Colour / Grey Blending starting from $50 (taking about 60 minutes), but our services focus on standard hair colour and grey blending rather than vibrant fashion colors like bright blue. \n\nWould you like to connect with a human agent to discuss if our barbers can accommodate a custom request like this?",
+      "reply": "We offer Hair Colour and Grey Blending starting at $50, which takes about 60 minutes (the exact price depends on hair length). However, we specialize in natural colours and grey blending rather than vibrant fashion colors like bright blue. \n\nWould you like me to connect you with a human team member to discuss if our barbers can accommodate your request?",
       "tools": [],
-      "latency_s": 3.14,
+      "latency_s": 3.01,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "correct": true
@@ -87,9 +87,9 @@
     {
       "cat": "out_of_scope",
       "q": "Do you offer nail manicures?",
-      "reply": "I don't know the answer to that! Would you like me to connect you with a human agent who can help?",
+      "reply": "I'm sorry, but we don't offer nail manicures at Fade & Co. Barbershop. We specialise in haircuts, shaves, and hair and beard care products! \n\nWould you like me to connect you with a human agent, or can I help you with any of our hair or beard services?",
       "tools": [],
-      "latency_s": 2.56,
+      "latency_s": 2.82,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "correct": true
@@ -97,11 +97,11 @@
     {
       "cat": "booking",
       "q": "What times are free on 2026-10-09?",
-      "reply": "Here are the available appointment times for October 9, 2026:\n\n09:00, 09:30, 10:00, 10:30, 11:00, 11:30, 12:00, 12:30, 13:00, 13:30, 14:00, 14:30, 15:00, 15:30, 16:00, 16:30, 17:00, and 17:30 (all times UTC).\n\nWould you like to book one of these times, or do you have a specific service in mind?",
+      "reply": "Here are the available appointment times for October 9, 2026:\n\n09:00, 09:30, 10:00, 10:30, 11:00, 11:30, 12:00, 12:30, 13:00, 13:30, 14:00, 14:30, 15:00, 15:30, 16:00, 16:30, 17:00, and 17:30. \n\nWould you like to book one of these times?",
       "tools": [
         "check_calendar_availability"
       ],
-      "latency_s": 4.74,
+      "latency_s": 3.76,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "correct": true
@@ -109,11 +109,11 @@
     {
       "cat": "booking",
       "q": "Please book me an appointment on 2026-10-09 at 10:00.",
-      "reply": "It looks like 10:00 is available on October 9, 2026, but I just need to know which service you would like to book. Could you let me know which service you're interested in?",
+      "reply": "Could you please let me know which service you would like to book for your appointment on October 9th at 10:00?",
       "tools": [
         "check_calendar_availability"
       ],
-      "latency_s": 4.07,
+      "latency_s": 4.16,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "correct": false
@@ -121,9 +121,9 @@
     {
       "cat": "booking",
       "q": "Can you book me on 2026-10-11 at 10:00?",
-      "reply": "Fade & Co. Barbershop is closed on Sundays (and public holidays), so we aren't open on 2026-10-11. \n\nWe're open Monday to Friday from 09:00 to 18:00, and Saturdays from 09:00 to 15:00 (walk-ins only). Would you like to check availability for a weekday appointment instead?",
+      "reply": "That date, 2026-10-11, is a Sunday. Fade & Co. Barbershop is closed on Sundays and public holidays, so we cannot take bookings for that day. \n\nWould you like to check availability for a weekday instead? (Please note that Saturdays are walk-in only, and appointments are available Monday through Friday.)",
       "tools": [],
-      "latency_s": 2.89,
+      "latency_s": 2.75,
       "mode": "gemini",
       "model": "gemini-3.5-flash-lite",
       "correct": true
@@ -135,7 +135,7 @@
       "tools": [
         "trigger_human_handoff"
       ],
-      "latency_s": 0.24,
+      "latency_s": 0.23,
       "mode": "gemini",
       "model": null,
       "correct": true
