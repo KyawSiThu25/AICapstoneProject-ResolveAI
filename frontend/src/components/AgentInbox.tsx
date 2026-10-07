@@ -101,6 +101,10 @@ export const AgentInbox: React.FC<AgentInboxProps> = ({
     ws.onmessage = (event) => {
       try {
         const payload = JSON.parse(event.data);
+        if (payload.type === 'data_reset') {
+          setSelectedId(null);
+          setCurrentMessages([]);
+        }
         fetchConversations();
 
         // Status-only events (conversation_updated) just refresh the list above

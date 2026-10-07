@@ -1,10 +1,11 @@
 import React from 'react';
-import { Terminal, Database, Calendar as CalendarIcon, ArrowUpRight, Cpu } from 'lucide-react';
+import { Terminal, Database, Calendar as CalendarIcon, ArrowUpRight, Cpu, Trash2 } from 'lucide-react';
 
 interface Props {
   onOpenKnowledge: () => void;
   onOpenCalendar: () => void;
   onOpenAiSettings: () => void;
+  onOpenReset: () => void;
   stats?: {
     total: number;
     handoff: number;
@@ -17,7 +18,8 @@ export const BusinessNavbar: React.FC<Props> = ({
   onOpenKnowledge, 
   onOpenCalendar, 
   onOpenAiSettings,
-  stats 
+  onOpenReset,
+  stats
 }) => {
   return (
     <header className="h-13 bg-white border-b-2 border-black px-4 sm:px-6 flex items-center justify-between text-black shrink-0 font-serif">
@@ -85,6 +87,15 @@ export const BusinessNavbar: React.FC<Props> = ({
         >
           <CalendarIcon className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Calendar</span>
+        </button>
+
+        <button
+          onClick={onOpenReset}
+          className="flex items-center gap-1.5 border border-red-700 bg-white text-red-700 hover:bg-red-700 hover:text-white px-2.5 py-1 font-mono text-xs uppercase tracking-wider transition-none cursor-pointer"
+          title="Delete chats, bookings or other business data"
+        >
+          <Trash2 className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Reset data</span>
         </button>
 
         {/* Link back to Customer Side on Port 5173 */}

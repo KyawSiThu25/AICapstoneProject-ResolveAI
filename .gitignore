@@ -26,3 +26,8 @@ dist/
 .DS_Store
 Thumbs.db
 *.log
+
+# --- Personal prompt / agent files (kept locally, never committed) ---
+.agents/
+capstone_project_prompt.md
+capstone_project_prompt.md.metadata.json
