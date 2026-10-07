@@ -1,0 +1,28 @@
+# --- Secrets: never commit ---
+.env
+backend/.env
+# Holds the Gemini API key once saved from the AI Settings panel
+backend/ai_settings.json
+
+# --- Local runtime data (SQLite DB, ChromaDB vector store, seed marker) ---
+backend/data/
+backend/schedule_settings.json
+
+# --- Python ---
+backend/venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# --- Node / Vite (see also frontend/.gitignore) ---
+node_modules/
+dist/
+
+# --- Editors / OS ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.log
